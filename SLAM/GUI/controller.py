@@ -14,9 +14,9 @@ import os
 class controller():
     def __init__(self):
         self.kit = MotorKit(i2c=board.I2C())
-        self.screen = self.curses.initscr()
-        self.curses.noecho()
-        self.curses.cbreak()
+        self.screen = curses.initscr()
+        curses.noecho()
+        curses.cbreak()
         self.screen.keypad(True)
         self.PWMvor = 0.75    # 0 bis 1 entspricht 0-100% PWM beim Vorwärtsfahren
         self.korr = 0.8       # Korrekturfaktor
@@ -27,13 +27,13 @@ class controller():
                 self.char = self.screen.getch()
                 if self.char == ord('q'):
                     break
-                elif self.char == self.curses.KEY_UP:
+                elif self.char == curses.KEY_UP:
                     self.vorwaerts()
-                elif self.char == self.curses.KEY_DOWN:
+                elif self.char == curses.KEY_DOWN:
                     self.zurueck()
-                elif self.char == self.curses.KEY_RIGHT:
+                elif self.char == curses.KEY_RIGHT:
                     self.rechtsDrehen()
-                elif self.char == self.curses.KEY_LEFT:
+                elif self.char == curses.KEY_LEFT:
                     self.linksDrehen()
                 elif self.char == 43:
                     if self.PWMvor < 1:

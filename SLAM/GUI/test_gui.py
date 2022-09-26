@@ -57,7 +57,7 @@ class MainGUI(Tk):
     def scenario_run(self):
         if(self.start_button['text'] == "start"):
             self.start_button['text'] = "stop"
-            execfile("controller.py")
+            exec(open("controller.py").read())
         else:
             self.start_button['text'] = "start"
         

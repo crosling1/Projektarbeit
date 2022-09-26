@@ -7,7 +7,6 @@ Created on Fri Sep 23 22:19:53 2022
 from tkinter import *
 from tkinter import ttk
 import tkinter as tk
-import controller.py
 
 class MainGUI(Tk):
 
@@ -58,7 +57,7 @@ class MainGUI(Tk):
     def scenario_run(self):
         if(self.start_button['text'] == "start"):
             self.start_button['text'] = "stop"
-            controller()
+            execfile("controller.py")
         else:
             self.start_button['text'] = "start"
         

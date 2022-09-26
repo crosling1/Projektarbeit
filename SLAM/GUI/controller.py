@@ -55,7 +55,7 @@ class controller():
                     self.stop()
                 
         finally:
-            curses.nocbreak(); screen.keypad(0); curses.echo()
+            curses.nocbreak(); self.screen.keypad(0); curses.echo()
             curses.endwin()
         
     def vorwaerts(self):

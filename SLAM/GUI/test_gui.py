@@ -65,6 +65,15 @@ class MainGUI(Tk):
     def forward(self):
         controller.vorwaerts()
         
+    def reverse(self):
+        controller.zurueck()
+        
+    def left(self):
+        controller.linksDrehen()
+        
+    def right(self):
+        controller.rechtsDrehen()
+        
     def stop(self):
         controller.stop()
         
@@ -93,11 +102,11 @@ class MainGUI(Tk):
         if (self.key == "o"):
             self.forward()
         elif (self.key == "t"):
-            self.zurueck()
+            self.reverse()
         elif (self.key == "q"):
-            self.linksDrehen()
+            self.left()
         elif (self.key == "r"):
-            self.rechtsDrehen()
+            self.right()
         elif (self.key == "A"):
             self.stop()
 

@@ -26,18 +26,21 @@ def zurueck():
     kit.motor2.throttle = -PWMzur
     kit.motor3.throttle = -PWMzur
     kit.motor4.throttle = -PWMzur
+    print("reverse")
     
 def rechtsDrehen():
     kit.motor1.throttle = -drehen
     kit.motor2.throttle = drehen
     kit.motor3.throttle = -drehen
     kit.motor4.throttle = drehen
+    print("right")
     
 def linksDrehen():
     kit.motor1.throttle = drehen
     kit.motor2.throttle = -drehen
     kit.motor3.throttle = drehen
     kit.motor4.throttle = -drehen
+    print("left")
     
 def stop():
     kit.motor1.throttle = 0

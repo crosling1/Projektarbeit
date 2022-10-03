@@ -55,9 +55,9 @@ class MainGUI(Tk):
         self.button_right.grid(column=2, row=1, sticky=tk.E, padx=5, pady=5)
         self.bind("<Key>",self.keyEvent)
         if (self.key == "o"):
-            self.forward()
+            self.forward
         elif (self.key == "t"):
-            self.stop()
+            self.stop
         self.mainloop()
         
     def scenario_run(self):

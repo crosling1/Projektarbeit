@@ -54,10 +54,6 @@ class MainGUI(Tk):
         self.button_right = tk.Button(self.keyboardframe, text = 'right')
         self.button_right.grid(column=2, row=1, sticky=tk.E, padx=5, pady=5)
         self.bind("<Key>",self.keyEvent)
-        if (self.key == "o"):
-            self.forward
-        elif (self.key == "t"):
-            self.stop
         self.mainloop()
         
     def scenario_run(self):
@@ -93,7 +89,10 @@ class MainGUI(Tk):
     def keyEvent(self, event):
         print("key : " + chr(event.keycode))
         self.key = chr(event.keycode)
-        print(self.key)
+        if (self.key == "o"):
+            self.forward
+        elif (self.key == "t"):
+            self.stop
 
 if __name__ == '__main__':
     app = MainGUI()

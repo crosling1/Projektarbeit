@@ -53,6 +53,10 @@ class MainGUI(Tk):
         self.button_right = tk.Button(self.keyboardframe, text = 'right')
         self.button_right.grid(column=2, row=1, sticky=tk.E, padx=5, pady=5)
         self.bind("<Key>",self.keyEvent)
+        if (self.keyEvent == "o"):
+            self.forward()
+        elif (self.keyEvent == "t"):
+            self.stop()
         self.mainloop()
         
     def scenario_run(self):

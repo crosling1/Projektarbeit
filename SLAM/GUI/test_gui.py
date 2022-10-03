@@ -13,6 +13,7 @@ class MainGUI(Tk):
 
     def __init__(self):
         Tk.__init__(self)
+        self.key = ""
         self.geometry("450x200")
         #self.configure(background="white")
         self.mainframe = ttk.Frame(self, padding="8 8 12 12")
@@ -53,9 +54,9 @@ class MainGUI(Tk):
         self.button_right = tk.Button(self.keyboardframe, text = 'right')
         self.button_right.grid(column=2, row=1, sticky=tk.E, padx=5, pady=5)
         self.bind("<Key>",self.keyEvent)
-        if (self.keyEvent == "o"):
+        if (self.key == "o"):
             self.forward()
-        elif (self.keyEvent == "t"):
+        elif (self.key == "t"):
             self.stop()
         self.mainloop()
         
@@ -91,6 +92,7 @@ class MainGUI(Tk):
       
     def keyEvent(self, event):
         print("key : " + chr(event.keycode))
+        self.key = chr(event.keycode)
 
 if __name__ == '__main__':
     app = MainGUI()

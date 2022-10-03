@@ -89,10 +89,11 @@ class MainGUI(Tk):
     def keyEvent(self, event):
         print("key : " + chr(event.keycode))
         self.key = chr(event.keycode)
+        print(self.key)
         if (self.key == "o"):
-            self.forward
+            self.forward()
         elif (self.key == "t"):
-            self.stop
+            self.stop()
 
 if __name__ == '__main__':
     app = MainGUI()

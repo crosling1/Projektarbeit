@@ -63,11 +63,11 @@ class MainGUI(Tk):
     
     def forward(self):
         controller.main()
-        controller.vorwaerts()
+        controller.main.vorwaerts()
         
     def stop(self):
         controller.main()
-        controller.stop()
+        controller.main.stop()
         
     def disable_button(self):
         if (self.modeVar.get() == 1):

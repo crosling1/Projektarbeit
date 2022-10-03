@@ -62,12 +62,12 @@ class MainGUI(Tk):
             self.start_button['text'] = "start"
     
     def forward(self):
-        controller.main()
-        controller.main.vorwaerts()
+        controller.main(self)
+        controller.main.vorwaerts(self)
         
     def stop(self):
-        controller.main()
-        controller.main.stop()
+        controller.main(self)
+        controller.main.stop(self)
         
     def disable_button(self):
         if (self.modeVar.get() == 1):

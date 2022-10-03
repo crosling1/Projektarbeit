@@ -93,6 +93,12 @@ class MainGUI(Tk):
         if (self.key == "o"):
             self.forward()
         elif (self.key == "t"):
+            self.zurueck()
+        elif (self.key == "q"):
+            self.linksDrehen()
+        elif (self.key == "r"):
+            self.rechtsDrehen()
+        elif (self.key == "A"):
             self.stop()
 
 if __name__ == '__main__':

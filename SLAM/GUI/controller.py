@@ -9,52 +9,47 @@ import board
 import time
 from adafruit_motorkit import MotorKit
 import curses
-import os
 
-class main():
-    def __init__(self):
-        self.kit = MotorKit(i2c=board.I2C())
-        self.screen = curses.initscr()
-        curses.noecho()
-        curses.cbreak()
-        self.screen.keypad(True)
-        self.PWMvor = 0.75    # 0 bis 1 entspricht 0-100% PWM beim Vorwärtsfahren
-        self.korr = 0.8       # Korrekturfaktor
-        self.PWMzur = 0.65    # entspricht dem Faktor der PWM beim Rückwärtsfahren
-        self.drehen = 0.75    # entspricht dem Faktor der PWM bei der Drehung
-        
-    def vorwaerts(self):
-        self.kit.motor1.throttle = self.PWMvor
-        self.kit.motor2.throttle = self.korr * self.PWMvor
-        self.kit.motor3.throttle = self.PWMvor
-        self.kit.motor4.throttle = self.korr * self.PWMvor
-        print("start")
+kit = MotorKit(i2c=board.I2C())
+screen = curses.initscr()
+curses.noecho()
+curses.cbreak()
+screen.keypad(True)
+PWMvor = 0.75    # 0 bis 1 entspricht 0-100% PWM beim Vorwärtsfahren
+korr = 0.8       # Korrekturfaktor
+PWMzur = 0.65    # entspricht dem Faktor der PWM beim Rückwärtsfahren
+drehen = 0.75    # entspricht dem Faktor der PWM bei der Drehung
 
-    def zurueck(self):
-        self.kit.motor1.throttle = -self.PWMzur
-        self.kit.motor2.throttle = -self.PWMzur
-        self.kit.motor3.throttle = -self.PWMzur
-        self.kit.motor4.throttle = -self.PWMzur
-        
-    def rechtsDrehen(self):
-        self.kit.motor1.throttle = -self.drehen
-        self.kit.motor2.throttle = self.drehen
-        self.kit.motor3.throttle = -self.drehen
-        self.kit.motor4.throttle = self.drehen
-        
-    def linksDrehen(self):
-        self.kit.motor1.throttle = self.drehen
-        self.kit.motor2.throttle = -self.drehen
-        self.kit.motor3.throttle = self.drehen
-        self.kit.motor4.throttle = -self.drehen
-        
-    def stop(self):
-        self.kit.motor1.throttle = 0
-        self.kit.motor2.throttle = 0
-        self.kit.motor3.throttle = 0
-        self.kit.motor4.throttle = 0
-        print("stop")
-        
-if __name__ == '__main__':
-    main()
+def vorwaerts():
+    kit.motor1.throttle = PWMvor
+    kit.motor2.throttle = korr * PWMvor
+    kit.motor3.throttle = PWMvor
+    kit.motor4.throttle = korr * PWMvor
+    print("start")
+
+def zurueck(self):
+    kit.motor1.throttle = -PWMzur
+    kit.motor2.throttle = -PWMzur
+    kit.motor3.throttle = -PWMzur
+    kit.motor4.throttle = -PWMzur
+    
+def rechtsDrehen(self):
+    kit.motor1.throttle = -drehen
+    kit.motor2.throttle = drehen
+    kit.motor3.throttle = -drehen
+    kit.motor4.throttle = drehen
+    
+def linksDrehen(self):
+    kit.motor1.throttle = drehen
+    kit.motor2.throttle = -drehen
+    kit.motor3.throttle = drehen
+    kit.motor4.throttle = -drehen
+    
+def stop(self):
+    kit.motor1.throttle = 0
+    kit.motor2.throttle = 0
+    kit.motor3.throttle = 0
+    kit.motor4.throttle = 0
+    print("stop")
+
     

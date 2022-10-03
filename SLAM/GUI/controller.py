@@ -22,33 +22,6 @@ class main():
         self.korr = 0.8       # Korrekturfaktor
         self.PWMzur = 0.65    # entspricht dem Faktor der PWM beim Rückwärtsfahren
         self.drehen = 0.75    # entspricht dem Faktor der PWM bei der Drehung
-        self.char = self.screen.getch()
-        if self.char == curses.KEY_UP:
-            self.vorwaerts()
-        elif self.char == curses.KEY_DOWN:
-            self.zurueck()
-        elif self.char == curses.KEY_RIGHT:
-            self.rechtsDrehen()
-        elif self.char == curses.KEY_LEFT:
-            self.linksDrehen()
-        elif self.char == 43:
-            if self.PWMvor < 1:
-                self.PWMvor += 0.05
-                if self.PWMvor > 1:
-                    self.PWMvor = 1
-            os.system('clear')
-            print(round(self.PWMvor, 2))
-            self.vorwaerts()
-        elif self.char == 45:
-            if self.PWMvor > 0:
-                self.PWMvor -= 0.05
-                if self.PWMvor < 0:
-                    self.PWMvor = 0
-            os.system('clear')
-            print(round(self.PWMvor, 2))
-            self.vorwaerts()
-        elif self.char == 32:
-            self.stop()
         
     def vorwaerts(self):
         self.kit.motor1.throttle = self.PWMvor
@@ -80,6 +53,7 @@ class main():
         self.kit.motor2.throttle = 0
         self.kit.motor3.throttle = 0
         self.kit.motor4.throttle = 0
+        print("stop")
         
 if __name__ == '__main__':
     main()

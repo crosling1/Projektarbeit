@@ -44,9 +44,9 @@ class MainGUI(Tk):
         #keyboard
         self.keyboardframe = tk.LabelFrame(self.mainframe, text = "keyboard")
         self.keyboardframe.grid(row=3, column=2, padx=10)
-        self.button_up = tk.Button(self.keyboardframe, text = 'up')
+        self.button_up = tk.Button(self.keyboardframe, command = self.forward, text = 'up')
         self.button_up.grid(column=1, row=0, sticky=tk.N, padx=5, pady=5)
-        self.button_down = tk.Button(self.keyboardframe, text = 'down')
+        self.button_down = tk.Button(self.keyboardframe, command = self.stop,  text = 'down')
         self.button_down.grid(column=1, row=1, sticky=tk.S, padx=5, pady=5)
         self.button_left = tk.Button(self.keyboardframe, text = 'left')
         self.button_left.grid(column=0, row=1, sticky=tk.W, padx=5, pady=5)
@@ -58,9 +58,16 @@ class MainGUI(Tk):
     def scenario_run(self):
         if(self.start_button['text'] == "start"):
             self.start_button['text'] = "stop"
-            controller.main()
         else:
             self.start_button['text'] = "start"
+    
+    def forward(self):
+        controller.main()
+        controller.vorwaerts()
+        
+    def stop(self):
+        controller.main()
+        controller.stop()
         
     def disable_button(self):
         if (self.modeVar.get() == 1):

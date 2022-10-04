@@ -3,6 +3,6 @@
   It requires rplidar.launch.
  -->
 <launch>
-  <include file="$(find SLAM)/launch/rplidar.launch" />
+  <include file="$(find rplidar_ros)/launch/rplidar.launch" />
   <include file="$(find hector_slam)/launch/tutorial_test.launch" />
 </launch>

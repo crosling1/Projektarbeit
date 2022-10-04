@@ -1,0 +1,8 @@
+<!--
+  Used for visualising rplidar in action.
+  It requires rplidar.launch.
+ -->
+<launch>
+  <include file="$(find SLAM)/launch/rplidar.launch" />
+  <include file="$(find hector_slam)/launch/tutorial_test.launch" />
+</launch>

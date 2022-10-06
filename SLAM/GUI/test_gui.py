@@ -49,11 +49,11 @@ class MainGUI(Tk):
         self.keyboardframe.grid(row=3, column=2, padx=10)
         self.button_up = tk.Button(self.keyboardframe, command = self.forward, text = 'up')
         self.button_up.grid(column=1, row=0, sticky=tk.N, padx=5, pady=5)
-        self.button_down = tk.Button(self.keyboardframe, command = self.stop,  text = 'down')
+        self.button_down = tk.Button(self.keyboardframe, command = self.reverse,  text = 'down')
         self.button_down.grid(column=1, row=1, sticky=tk.S, padx=5, pady=5)
-        self.button_left = tk.Button(self.keyboardframe, text = 'left')
+        self.button_left = tk.Button(self.keyboardframe, command = self.left, text = 'left')
         self.button_left.grid(column=0, row=1, sticky=tk.W, padx=5, pady=5)
-        self.button_right = tk.Button(self.keyboardframe, text = 'right')
+        self.button_right = tk.Button(self.keyboardframe, command = self.right, text = 'right')
         self.button_right.grid(column=2, row=1, sticky=tk.E, padx=5, pady=5)
         self.bind("<Key>",self.keyEvent)
         self.mainloop()
@@ -67,19 +67,24 @@ class MainGUI(Tk):
             self.rplidar.send_signal(signal.SIGINT)
     
     def forward(self):
-        controller.vorwaerts()
+        if(self.start_button['text'] == "stop" & self.modeVar == 1):
+            controller.vorwaerts()
         
     def reverse(self):
-        controller.zurueck()
+        if(self.start_button['text'] == "stop" & self.modeVar == 1):
+            controller.zurueck()
         
     def left(self):
-        controller.linksDrehen()
+        if(self.start_button['text'] == "stop" & self.modeVar == 1):
+            controller.linksDrehen()
         
     def right(self):
-        controller.rechtsDrehen()
+        if(self.start_button['text'] == "stop" & self.modeVar == 1):
+            controller.rechtsDrehen()
         
     def stop(self):
-        controller.stop()
+        if(self.start_button['text'] == "stop" & self.modeVar == 1):
+            controller.stop()
         
     def disable_button(self):
         if (self.modeVar.get() == 1):

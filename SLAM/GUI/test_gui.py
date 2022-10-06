@@ -67,23 +67,23 @@ class MainGUI(Tk):
             self.rplidar.send_signal(signal.SIGINT)
     
     def forward(self):
-        if(self.start_button['text'] == "stop" & self.modeVar == 1):
+        if(self.start_button['text'] == "stop" and self.modeVar == 1):
             controller.vorwaerts()
         
     def reverse(self):
-        if(self.start_button['text'] == "stop" & self.modeVar == 1):
+        if(self.start_button['text'] == "stop" and self.modeVar == 1):
             controller.zurueck()
         
     def left(self):
-        if(self.start_button['text'] == "stop" & self.modeVar == 1):
+        if(self.start_button['text'] == "stop" and self.modeVar == 1):
             controller.linksDrehen()
         
     def right(self):
-        if(self.start_button['text'] == "stop" & self.modeVar == 1):
+        if(self.start_button['text'] == "stop" and self.modeVar == 1):
             controller.rechtsDrehen()
         
     def stop(self):
-        if(self.start_button['text'] == "stop" & self.modeVar == 1):
+        if(self.start_button['text'] == "stop" and self.modeVar == 1):
             controller.stop()
         
     def disable_button(self):

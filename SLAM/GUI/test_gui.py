@@ -67,11 +67,11 @@ class MainGUI(Tk):
             self.rplidar.send_signal(signal.SIGINT)
     
     def forward(self):
-        if(self.start_button['text'] == "stop" and self.modeVar == 1):
+        if(self.modeVar == 1):
             controller.vorwaerts()
         
     def reverse(self):
-        if(self.start_button['text'] == "stop" and self.modeVar == 1):
+        if(self.start_button['text'] == "stop"):
             controller.zurueck()
         
     def left(self):

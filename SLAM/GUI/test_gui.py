@@ -9,6 +9,7 @@ from tkinter import ttk
 import tkinter as tk
 import controller
 import subprocess
+import signal
 
 class MainGUI(Tk):
 
@@ -60,9 +61,10 @@ class MainGUI(Tk):
     def scenario_run(self):
         if(self.start_button['text'] == "start"):
             self.start_button['text'] = "stop"
-            subprocess.Popen(['roslaunch','rplidar_ros','test_slam.launch'])
+            rplidar = subprocess.Popen(['roslaunch','rplidar_ros','test_slam.launch'])
         else:
             self.start_button['text'] = "start"
+            rplidar.send_signal(signal.SIGINT)
     
     def forward(self):
         controller.vorwaerts()

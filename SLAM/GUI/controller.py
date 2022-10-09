@@ -121,8 +121,8 @@ def process_data():
 
     for angle in range(360):
         distance = scan_data[angle]
-        if distance > 0:                  # ignore initially ungathered data points
-            print(angle, distance)
+        print(angle, distance)                  # ignore initially ungathered data points
+            
 
 
 scan_data = [0]*360

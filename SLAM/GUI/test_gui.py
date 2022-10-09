@@ -57,7 +57,7 @@ class MainGUI(Tk):
         self.button_right.grid(column=2, row=1, sticky=tk.E, padx=5, pady=5)
         self.bind("<Key>",self.keyEvent)
         if(self.start_button['text'] == "stop"):
-            controller.process_data()
+            
         self.mainloop()
         
     def scenario_run(self):
@@ -112,6 +112,7 @@ class MainGUI(Tk):
         print(self.key)
         if (self.key == "o"):
             self.forward()
+            controller.process_data()
         elif (self.key == "t"):
             self.reverse()
         elif (self.key == "q"):

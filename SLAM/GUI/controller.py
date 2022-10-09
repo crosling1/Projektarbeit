@@ -115,9 +115,11 @@ def lidar_scans(self, max_buf_meas=500, min_len=5):
 #pylint: disable=redefined-outer-name,global-statement
 def process_data():
     global max_distance
+    print("start")  
     for scan in lidar_scans(lidar):
        for (_, angle, distance) in scan:
            scan_data[min([359, floor(angle)])] = distance
+           print(distance)
 
     for angle in range(360):
         distance = scan_data[angle]

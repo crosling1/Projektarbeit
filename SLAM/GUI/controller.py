@@ -21,6 +21,8 @@ SCAN_TYPE = 129
 # Setup the RPLidar
 PORT_NAME = '/dev/ttyUSB0'
 lidar = RPLidar(None, PORT_NAME)
+lidar.stop()
+
 
 def vorwaerts():
     kit.motor1.throttle = PWMvor

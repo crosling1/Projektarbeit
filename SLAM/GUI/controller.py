@@ -8,7 +8,6 @@ Created on Mon Sep 26 21:02:15 2022
 import board
 from adafruit_motorkit import MotorKit
 from math import cos, sin, pi, floor
-import pygame
 from adafruit_rplidar import RPLidar
 
 kit = MotorKit(i2c=board.I2C())
@@ -76,7 +75,7 @@ def _process_scan(raw):
     
 def lidar_measurments(self, max_buf_meas=500):
        
-        lidar.set_pwm(800)
+        lidar.set_pwm(660)
         status, error_code = self.health
         
         cmd = SCAN_BYTE

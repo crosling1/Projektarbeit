@@ -17,6 +17,7 @@ PWMzur = 0.65    # entspricht dem Faktor der PWM beim Rückwärtsfahren
 drehen = 0.75    # entspricht dem Faktor der PWM bei der Drehung
 SCAN_BYTE = b'\x20'
 SCAN_TYPE = 129
+scan_data = [0]*360
 # Setup the RPLidar
 PORT_NAME = '/dev/ttyUSB0'
 lidar = RPLidar(None, PORT_NAME)
@@ -63,8 +64,8 @@ def _process_scan(raw):
     new_scan = bool(raw[0] & 0b1)
     inversed_new_scan = bool((raw[0] >> 1) & 0b1)
     quality = raw[0] >> 2
-    if new_scan == inversed_new_scan:
-        raise RPLidarException('New scan flags mismatch')
+    #if new_scan == inversed_new_scan:
+    #    raise RPLidarException('New scan flags mismatch')
     check_bit = raw[1] & 0b1
     if check_bit != 1:
         raise RPLidarException('Check bit not equal to 1')
@@ -127,6 +128,6 @@ def process_data():
             
 
 
-scan_data = [0]*360
+
 
     

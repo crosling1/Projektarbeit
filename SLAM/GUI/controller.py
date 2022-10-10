@@ -64,8 +64,9 @@ def _process_scan(raw):
     new_scan = bool(raw[0] & 0b1)
     inversed_new_scan = bool((raw[0] >> 1) & 0b1)
     quality = raw[0] >> 2
-    #if new_scan == inversed_new_scan:
-    #    raise RPLidarException('New scan flags mismatch')
+    if new_scan == inversed_new_scan:
+        #raise RPLidarException('New scan flags mismatch')
+        lidar_measurments()      
     check_bit = raw[1] & 0b1
     if check_bit != 1:
         raise RPLidarException('Check bit not equal to 1')

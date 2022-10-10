@@ -22,7 +22,6 @@ SCAN_TYPE = 129
 PORT_NAME = '/dev/ttyUSB0'
 lidar = RPLidar(None, PORT_NAME)
 lidar.set_pwm(0)
-lidar.stop()
 
 
 def vorwaerts():
@@ -122,7 +121,7 @@ def process_data():
     for scan in lidar_scans(lidar):
        for (_, angle, distance) in scan:
            scan_data[min([359, floor(angle)])] = distance
-           print(distance)
+           print(angle, distance)
 
     for angle in range(360):
         distance = scan_data[angle]

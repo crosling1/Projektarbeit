@@ -23,7 +23,6 @@ PORT_NAME = '/dev/ttyUSB0'
 lidar = RPLidar(None, PORT_NAME)
 lidar.set_pwm(0)
 lidar.stop()
-lidar.disconnect()
 
 
 def vorwaerts():

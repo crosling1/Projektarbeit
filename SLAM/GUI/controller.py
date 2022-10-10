@@ -69,7 +69,7 @@ def _process_scan(raw):
         process_data()      
     check_bit = raw[1] & 0b1
     if check_bit != 1:
-        raise RPLidarException('Check bit not equal to 1')
+        process_data()
     angle = ((raw[1] >> 1) + (raw[2] << 7)) / 64.
     distance = (raw[3] + (raw[4] << 8)) / 4.
     return new_scan, quality, angle, distance

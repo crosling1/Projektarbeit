@@ -20,7 +20,7 @@ SCAN_TYPE = 129
 scan_data = [0]*360
 # Setup the RPLidar
 PORT_NAME = '/dev/ttyUSB0'
-lidar = RPLidar(None, PORT_NAME)
+lidar = RPLidar(PORT_NAME)
 
 
 def vorwaerts():

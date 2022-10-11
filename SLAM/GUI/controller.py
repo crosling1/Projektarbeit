@@ -8,7 +8,7 @@ Created on Mon Sep 26 21:02:15 2022
 import board
 from adafruit_motorkit import MotorKit
 from math import cos, sin, pi, floor
-from adafruit_rplidar import RPLidar
+from rplidar import RPLidar
 
 kit = MotorKit(i2c=board.I2C())
 PWMvor = 0.75    # 0 bis 1 entspricht 0-100% PWM beim Vorwärtsfahren
@@ -116,16 +116,16 @@ def lidar_scans(self, max_buf_meas=500, min_len=5):
     
 #pylint: disable=redefined-outer-name,global-statement
 def process_data():
-    global max_distance
-    print("start")  
-    for scan in lidar_scans(lidar):
-       for (_, angle, distance) in scan:
-           scan_data[min([359, floor(angle)])] = distance
-           print(angle, distance)
-
-    for angle in range(360):
-        distance = scan_data[angle]
-        print(angle, distance)                  # ignore initially ungathered data points
+    info = lidar.get_info()
+    print(info)
+    
+    health = lidar.get_health()
+    print(health)
+    
+    for i, scan in enumerate(lidar.iter_scans()):
+        print('%d: Got %d measurments' % (i, len(scan)))
+        if i > 10:
+            break
             
 
 

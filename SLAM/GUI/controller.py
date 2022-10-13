@@ -53,9 +53,9 @@ def stop():
     print("stop")
     
 def scan():  
-    popen = subprocess.Popen("rosrun","rplidar_ros","rplidarNodeClient", shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    (stdoutdata, stderrdata) = popen.communicate()
-    return stdoutdata, stderrdata
+    popen = subprocess.Popen("rosrun","rplidar_ros","rplidarNodeClient", stdout=subprocess.PIPE)
+    output = popen.stdout.readline()
+    return output
 
 
 

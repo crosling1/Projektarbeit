@@ -110,7 +110,8 @@ class MainGUI(Tk):
         print(self.key)
         if (self.key == "o"):
             self.forward()
-            controller.process_data()
+            a = controller.scan()
+            print(a)
         elif (self.key == "t"):
             self.reverse()
         elif (self.key == "q"):

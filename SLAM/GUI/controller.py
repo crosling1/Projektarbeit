@@ -57,7 +57,6 @@ def scan():
             ["rosrun","rplidar_ros","rplidarNodeClient"], 
             stdout=subprocess.PIPE,
             shell=True,
-            encoding="utf-8",
     ) as result: 
         output = result.communicate()[0]
     return output

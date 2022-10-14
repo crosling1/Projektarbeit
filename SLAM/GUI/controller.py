@@ -59,7 +59,7 @@ def scan():
             shell=True,
             encoding="utf-8",
     ) as result: 
-        output = result.coummincate()
+        output = result.communicate()
     return output
 
 

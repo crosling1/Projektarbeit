@@ -59,7 +59,9 @@ def scan():
             shell=True,
             encoding="utf-8",
     ) as result: 
-        output = result.stdout()
+        output = result.stdout.readline()
+        print("successed")
+        print(output)
     return output
 
 

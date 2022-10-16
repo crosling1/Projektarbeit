@@ -16,6 +16,7 @@ class MainGUI(Tk):
     def __init__(self):
         Tk.__init__(self)
         self.key = ""
+        self.scan_run = False
         self.geometry("450x200")
         #self.configure(background="white")
         self.mainframe = ttk.Frame(self, padding="8 8 12 12")
@@ -56,7 +57,7 @@ class MainGUI(Tk):
         self.button_right = tk.Button(self.keyboardframe, command = self.right, text = 'right')
         self.button_right.grid(column=2, row=1, sticky=tk.E, padx=5, pady=5)
         self.bind("<Key>",self.keyEvent)
-        if(self.start_button['text'] == "stop"):
+        if(self.scan_run == True):
             controller.scan()
         self.mainloop()
         
@@ -111,6 +112,7 @@ class MainGUI(Tk):
         print(self.key)
         if (self.key == "o"):
             self.forward()
+            self.scan_run = True
         elif (self.key == "t"):
             self.reverse()
         elif (self.key == "q"):
@@ -119,6 +121,7 @@ class MainGUI(Tk):
             self.right()
         elif (self.key == "A"):
             self.stop()
+            self.scan_run = False
 
 if __name__ == '__main__':
     app = MainGUI()

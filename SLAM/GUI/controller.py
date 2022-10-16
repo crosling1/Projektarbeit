@@ -62,9 +62,9 @@ def scan():
             shell=True,
             encoding="utf-8",
     )
-    while test.poll() == None:
-    	out = test.stdout.readline()
-    	print(out, end='')
+    out = test.stdout.readline()
+    print(out, end='')
+    	
         
 
 

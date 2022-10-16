@@ -53,8 +53,8 @@ def stop():
     kit.motor4.throttle = 0
     print("stop")
     
-def scan(): 
-    test = subprocess.Popen(
+def scan(self): 
+    self.test = subprocess.Popen(
             ['rosrun rplidar_ros rplidarNodeClient'],
             bufsize=64,
             stdin=subprocess.PIPE,
@@ -63,11 +63,11 @@ def scan():
             shell=True,
             encoding="utf-8",
     )
-    thread_scan(test)
+    thread_scan()
     
 
-def thread_scan(test):
-    out = test.stdout.readline()
+def thread_scan(self):
+    out = self.test.stdout.readline()
     print(out, end='')
     threading.Timer(0.001, thread_scan).start()
     	

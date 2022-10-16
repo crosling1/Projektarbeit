@@ -64,6 +64,7 @@ class MainGUI(Tk):
     def scenario_run(self):
         if(self.start_button['text'] == "start"):
             self.start_button['text'] = "stop"
+            self.rplidar = subprocess.Popen(['roslaunch','rplidar_ros','test_slam.launch'])
         else:
             self.start_button['text'] = "start"
             self.rplidar.send_signal(signal.SIGINT)

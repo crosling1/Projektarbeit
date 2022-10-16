@@ -62,7 +62,7 @@ def scan():
         output = result.stdout.readline()
         print("successed")
         print(output)
-    return output
+        #subprocess.Popen.terminate()
 
 
 

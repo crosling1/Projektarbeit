@@ -56,12 +56,13 @@ class MainGUI(Tk):
         self.button_right = tk.Button(self.keyboardframe, command = self.right, text = 'right')
         self.button_right.grid(column=2, row=1, sticky=tk.E, padx=5, pady=5)
         self.bind("<Key>",self.keyEvent)
+        if(self.start_button['text'] == "stop"):
+            controller.scan()
         self.mainloop()
         
     def scenario_run(self):
         if(self.start_button['text'] == "start"):
             self.start_button['text'] = "stop"
-            self.rplidar = subprocess.Popen(['roslaunch','rplidar_ros','test_slam.launch'])
         else:
             self.start_button['text'] = "start"
             self.rplidar.send_signal(signal.SIGINT)
@@ -110,7 +111,6 @@ class MainGUI(Tk):
         print(self.key)
         if (self.key == "o"):
             self.forward()
-            controller.scan()
         elif (self.key == "t"):
             self.reverse()
         elif (self.key == "q"):

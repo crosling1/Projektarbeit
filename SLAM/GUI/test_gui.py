@@ -10,6 +10,7 @@ import tkinter as tk
 import controller
 import subprocess
 import signal
+import threading
 
 class MainGUI(Tk):
 
@@ -121,8 +122,12 @@ class MainGUI(Tk):
         elif (self.key == "A"):
             self.stop()
             self.scan_run = False
+            
+    def thread_scan(self):
+        if(self.scan_run == True):
+            controller.scan()
+        threading.Timer(0.1, self.thread_scan).start()
 
 if __name__ == '__main__':
     app = MainGUI()
-    if(MainGUI.scan_run == True):
-        controller.scan()
+    

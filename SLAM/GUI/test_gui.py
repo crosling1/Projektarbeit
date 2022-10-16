@@ -127,7 +127,7 @@ class MainGUI(Tk):
     def thread_scan(self):
         if(self.scan_run == True):
             controller.scan()
-        threading.Timer(0.1, self.thread_scan).start()
+        threading.Timer(0.001, self.thread_scan).start()
 
 if __name__ == '__main__':
     app = MainGUI()

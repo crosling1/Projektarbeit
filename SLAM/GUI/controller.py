@@ -9,6 +9,7 @@ import board
 from adafruit_motorkit import MotorKit
 from math import cos, sin, pi, floor
 import subprocess
+import threading
 
 kit = MotorKit(i2c=board.I2C())
 PWMvor = 0.75    # 0 bis 1 entspricht 0-100% PWM beim Vorwärtsfahren
@@ -62,8 +63,13 @@ def scan():
             shell=True,
             encoding="utf-8",
     )
+    thread_scan(test)
+    
+
+def thread_scan(test):
     out = test.stdout.readline()
     print(out, end='')
+    threading.Timer(0.001, thread_scan).start()
     	
         
 

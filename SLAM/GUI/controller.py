@@ -52,8 +52,8 @@ def stop():
     kit.motor4.throttle = 0
     print("stop")
     
-def scan():  
-    with subprocess.Popen(
+def scan(): 
+    test = subprocess.Popen(
             ['rosrun rplidar_ros rplidarNodeClient'],
             bufsize=64,
             stdin=subprocess.PIPE,
@@ -61,10 +61,11 @@ def scan():
             stdout=subprocess.PIPE,
             shell=True,
             encoding="utf-8",
-    ) as result: 
-        output = result.stdout.readline()
-        print("successed")
-        print(output)
+    )
+    while test.poll() == None:
+    	out = test.stdout.readline()
+    	print(out, end='')
+        
 
 
 

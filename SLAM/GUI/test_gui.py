@@ -58,6 +58,7 @@ class MainGUI(Tk):
         self.button_right = tk.Button(self.keyboardframe, command = self.right, text = 'right')
         self.button_right.grid(column=2, row=1, sticky=tk.E, padx=5, pady=5)
         self.bind("<Key>",self.keyEvent)
+        self.thread_scan()
         self.mainloop()
         
     def scenario_run(self):

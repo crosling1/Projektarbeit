@@ -135,7 +135,7 @@ class MainGUI(Tk):
     def thread_scan(self):
         out = self.test.stdout.readline()
         print(out, end='')
-        self.t = threading.Timer(0.001, self.thread_scan).start()
+        self.t = threading.Timer(0.1, self.thread_scan).start()
  
 if __name__ == '__main__':
     app = MainGUI()

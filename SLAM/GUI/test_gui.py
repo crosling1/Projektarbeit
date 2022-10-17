@@ -9,6 +9,7 @@ from tkinter import ttk
 import tkinter as tk
 import controller
 import subprocess
+import threading
 import signal
 
 class MainGUI(Tk):
@@ -110,7 +111,17 @@ class MainGUI(Tk):
         print(self.key)
         if (self.key == "o"):
             self.forward()
-            controller.self.scan()
+            #scan
+            self.test = subprocess.Popen(
+                    ['rosrun rplidar_ros rplidarNodeClient'],
+                    bufsize=64,
+                    stdin=subprocess.PIPE,
+                    stderr=subprocess.PIPE,
+                    stdout=subprocess.PIPE,
+                    shell=True,
+                    encoding="utf-8",
+            )
+            self.thread_scan(self.test)
         elif (self.key == "t"):
             self.reverse()
         elif (self.key == "q"):
@@ -119,6 +130,12 @@ class MainGUI(Tk):
             self.right()
         elif (self.key == "A"):
             self.stop()
+            self.t.cancel()
+
+    def thread_scan(self,test):
+        out = test.stdout.readline()
+        print(out, end='')
+        self.t = threading.Timer(0.001, self.thread_scan).start()
  
 if __name__ == '__main__':
     app = MainGUI()

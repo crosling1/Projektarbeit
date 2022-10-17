@@ -8,8 +8,7 @@ Created on Mon Sep 26 21:02:15 2022
 import board
 from adafruit_motorkit import MotorKit
 from math import cos, sin, pi, floor
-import subprocess
-import threading
+
 
 kit = MotorKit(i2c=board.I2C())
 PWMvor = 0.75    # 0 bis 1 entspricht 0-100% PWM beim Vorwärtsfahren
@@ -53,23 +52,7 @@ def stop():
     kit.motor4.throttle = 0
     print("stop")
     
-def scan(self): 
-    self.test = subprocess.Popen(
-            ['rosrun rplidar_ros rplidarNodeClient'],
-            bufsize=64,
-            stdin=subprocess.PIPE,
-            stderr=subprocess.PIPE,
-            stdout=subprocess.PIPE,
-            shell=True,
-            encoding="utf-8",
-    )
-    thread_scan()
-    
 
-def thread_scan(self):
-    out = self.test.stdout.readline()
-    print(out, end='')
-    threading.Timer(0.001, thread_scan).start()
     	
         
 

@@ -122,6 +122,7 @@ class MainGUI(Tk):
                     encoding="utf-8",
             )
             self.t = threading.Timer(0.1, self.thread_scan)
+            self.t.start()
             self.thread_scan()
         elif (self.key == "t"):
             self.reverse()
@@ -136,7 +137,6 @@ class MainGUI(Tk):
     def thread_scan(self):
         out = self.test.stdout.readline()
         print(out, end='')
-        self.t.start()
  
 if __name__ == '__main__':
     app = MainGUI()

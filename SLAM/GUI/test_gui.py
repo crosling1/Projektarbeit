@@ -121,8 +121,6 @@ class MainGUI(Tk):
                     shell=True,
                     encoding="utf-8",
             )
-            self.t = threading.Timer(0.1, self.thread_scan)
-            self.t.start()
             self.thread_scan()
         elif (self.key == "t"):
             self.reverse()
@@ -135,6 +133,8 @@ class MainGUI(Tk):
             self.t.cancel()
 
     def thread_scan(self):
+        self.t = threading.Timer(0.1, self.thread_scan)
+        self.t.start()
         out = self.test.stdout.readline()
         print(out, end='')
 

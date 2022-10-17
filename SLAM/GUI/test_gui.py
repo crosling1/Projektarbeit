@@ -135,10 +135,9 @@ class MainGUI(Tk):
             self.t.cancel()
 
     def thread_scan(self):
-        if (self.test.stdout != None):
-            out = self.test.stdout.readline()
-            print(out, end='')
- 
+        out = self.test.stdout.readline()
+        print(out, end='')
+
 if __name__ == '__main__':
     app = MainGUI()
     

@@ -76,15 +76,15 @@ class MainGUI(Tk):
             controller.zurueck()
         
     def left(self):
-        if(self.start_button['text'] == "stop" and self.modeVar == 1):
+        if(self.start_button['text'] == "stop" and self.modeVar.get() == 1):
             controller.linksDrehen()
         
     def right(self):
-        if(self.start_button['text'] == "stop" and self.modeVar == 1):
+        if(self.start_button['text'] == "stop" and self.modeVar.get() == 1):
             controller.rechtsDrehen()
         
     def stop(self):
-        if(self.start_button['text'] == "stop" and self.modeVar == 1):
+        if(self.start_button['text'] == "stop" and self.modeVar.get() == 1):
             controller.stop()
         
     def disable_button(self):
